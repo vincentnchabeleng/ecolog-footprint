@@ -1,0 +1,11 @@
+{
+  "lint": {
+    "rules": {
+      "exclude": [
+        "no-unused-vars",
+        "no-node-globals",
+        "require-await"
+      ]
+    }
+  }
+}
