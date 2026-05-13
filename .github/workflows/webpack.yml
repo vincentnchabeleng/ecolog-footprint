@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -13,7 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-      fail-fast: false
+      fail-fast: false   # Prevents cancellation of other jobs
 
     steps:
     - uses: actions/checkout@v4
@@ -24,7 +25,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install dependencies
+      working-directory: ./backend   # 👈 Go into backend folder
       run: npm install
 
-    - name: Start server (verify it works)
-      run: node server.js &
+    - name: Start server (verify)
+      working-directory: ./backend   # 👈 Same here
+      run: |
+        node server.js &
