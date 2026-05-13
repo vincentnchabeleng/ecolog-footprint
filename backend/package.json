@@ -28,5 +28,5 @@
     "node": ">=18.0.0"
   },
   "author": "EcoLog Team",
-  "license": "VIN"
+  "license": "MIT"
 }
